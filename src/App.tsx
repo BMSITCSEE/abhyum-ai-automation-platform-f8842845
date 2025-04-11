@@ -16,6 +16,7 @@ import Settings from "./pages/Settings";
 import Support from "./pages/Support";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
                   <Route path="/settings" element={<Settings />} />
                   <Route path="/support" element={<Support />} />
                   <Route path="/cart" element={<Cart />} />
+                  <Route path="/about" element={<About />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
