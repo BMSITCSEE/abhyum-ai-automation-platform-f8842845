@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Brand colors
+				brand: {
+					blue: '#3366FF',
+					purple: '#8B5CF6',
+					teal: '#06B6D4',
+					dark: '#0F172A',
 				}
 			},
 			borderRadius: {
@@ -84,11 +92,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					from: { opacity: '0' },
+					to: { opacity: '1' }
+				},
+				'fade-up': {
+					from: { opacity: '0', transform: 'translateY(10px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
+				'gradient-flow': {
+					'0%, 100%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'fade-up': 'fade-up 0.5s ease-out',
+				'gradient-flow': 'gradient-flow 10s ease infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'hero-pattern': 'linear-gradient(120deg, #3366FF, #8B5CF6, #06B6D4)',
+				'card-gradient': 'linear-gradient(180deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9))',
 			}
 		}
 	},
