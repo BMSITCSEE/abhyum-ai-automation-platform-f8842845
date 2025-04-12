@@ -18,6 +18,9 @@ import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 
+// Get the base URL from Vite's environment variables or default to '/'
+const basename = import.meta.env.BASE_URL;
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,7 +30,7 @@ const App = () => (
       <Sonner />
       <AuthProvider>
         <CartProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={basename}>
             <div className="flex flex-col min-h-screen">
               <Navbar />
               <main className="flex-1">
