@@ -36,6 +36,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
 
 // Mock order history data
 const mockOrderHistory = [
@@ -68,6 +69,10 @@ const Settings = () => {
     address: '',
     bio: '',
   });
+  
+  // Create form instances for each form
+  const profileForm = useForm();
+  const passwordForm = useForm();
   
   // Notification settings
   const [notifications, setNotifications] = useState({
@@ -181,7 +186,7 @@ const Settings = () => {
                   <form onSubmit={handleProfileUpdate}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <FormLabel>Full Name</FormLabel>
+                        <label className="text-sm font-medium">Full Name</label>
                         <Input
                           name="name"
                           value={formData.name}
@@ -192,7 +197,7 @@ const Settings = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <FormLabel>Email</FormLabel>
+                        <label className="text-sm font-medium">Email</label>
                         <Input
                           name="email"
                           value={formData.email}
@@ -206,7 +211,7 @@ const Settings = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <FormLabel>Phone Number</FormLabel>
+                        <label className="text-sm font-medium">Phone Number</label>
                         <Input
                           name="phone"
                           value={formData.phone}
@@ -217,7 +222,7 @@ const Settings = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <FormLabel>Company</FormLabel>
+                        <label className="text-sm font-medium">Company</label>
                         <Input
                           name="company"
                           value={formData.company}
@@ -228,7 +233,7 @@ const Settings = () => {
                       </div>
                       
                       <div className="space-y-2 md:col-span-2">
-                        <FormLabel>Address</FormLabel>
+                        <label className="text-sm font-medium">Address</label>
                         <Input
                           name="address"
                           value={formData.address}
@@ -239,7 +244,7 @@ const Settings = () => {
                       </div>
                       
                       <div className="space-y-2 md:col-span-2">
-                        <FormLabel>Bio</FormLabel>
+                        <label className="text-sm font-medium">Bio</label>
                         <Textarea
                           name="bio"
                           value={formData.bio}
@@ -380,43 +385,45 @@ const Settings = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                    <div className="space-y-2">
-                      <FormLabel>Current Password</FormLabel>
-                      <Input
-                        type="password"
-                        placeholder="Current password"
-                        className="bg-gray-800 border-gray-700"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <FormLabel>New Password</FormLabel>
-                      <Input
-                        type="password"
-                        placeholder="New password"
-                        className="bg-gray-800 border-gray-700"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <FormLabel>Confirm New Password</FormLabel>
-                      <Input
-                        type="password"
-                        placeholder="Confirm new password"
-                        className="bg-gray-800 border-gray-700"
-                      />
-                    </div>
-                    
-                    <Button 
-                      type="submit"
-                      onClick={() => {
-                        toast.success("Password updated successfully");
-                      }}
-                    >
-                      Update Password
-                    </Button>
-                  </form>
+                  <Form {...passwordForm}>
+                    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Current Password</label>
+                        <Input
+                          type="password"
+                          placeholder="Current password"
+                          className="bg-gray-800 border-gray-700"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">New Password</label>
+                        <Input
+                          type="password"
+                          placeholder="New password"
+                          className="bg-gray-800 border-gray-700"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Confirm New Password</label>
+                        <Input
+                          type="password"
+                          placeholder="Confirm new password"
+                          className="bg-gray-800 border-gray-700"
+                        />
+                      </div>
+                      
+                      <Button 
+                        type="submit"
+                        onClick={() => {
+                          toast.success("Password updated successfully");
+                        }}
+                      >
+                        Update Password
+                      </Button>
+                    </form>
+                  </Form>
                 </CardContent>
               </Card>
               
