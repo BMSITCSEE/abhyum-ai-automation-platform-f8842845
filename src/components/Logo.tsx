@@ -9,10 +9,7 @@ interface LogoProps {
 
 // Get base URL dynamically based on current environment
 const getBasePath = () => {
-  // In production use the GitHub Pages path, in development use root
-  return import.meta.env.MODE === 'production' 
-    ? '/abhyum-ai-automation-platform-f8842845' 
-    : '';
+  return '/abhyum-ai-automation-platform-f8842845';
 };
 
 const Logo: FC<LogoProps> = ({ className = "", showText = true }) => {

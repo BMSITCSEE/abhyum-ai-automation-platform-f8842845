@@ -18,8 +18,8 @@ import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 
-// Get the base URL from environment - dynamically determine if we're in production or development
-const basename = import.meta.env.MODE === 'production' ? '/abhyum-ai-automation-platform-f8842845' : '/';
+// Set the base URL for GitHub Pages
+const basename = '/abhyum-ai-automation-platform-f8842845';
 
 const queryClient = new QueryClient();
 
