@@ -11,7 +11,7 @@ interface LogoProps {
 const getBasePath = () => {
   // In production use the GitHub Pages path, in development use root
   return import.meta.env.MODE === 'production' 
-    ? '/abhyum-ai-automation-platform' 
+    ? '/abhyum-ai-automation-platform-f8842845' 
     : '';
 };
 

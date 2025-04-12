@@ -19,7 +19,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 
 // Get the base URL from environment - dynamically determine if we're in production or development
-const basename = import.meta.env.MODE === 'production' ? '/abhyum-ai-automation-platform' : '/';
+const basename = import.meta.env.MODE === 'production' ? '/abhyum-ai-automation-platform-f8842845' : '/';
 
 const queryClient = new QueryClient();
 
