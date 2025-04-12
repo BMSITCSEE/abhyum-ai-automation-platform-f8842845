@@ -3,70 +3,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+:root {
+  --brand-dark: #0a0a0a;
+  --brand-blue: #3b82f6;
+  --brand-purple: #8b5cf6;
+  --brand-teal: #14b8a6;
+}
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 270 76% 63%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 75%;
-
-    --accent: 191 91% 43%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 224 76% 48%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 76% 63%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 20%;
-    --sidebar-ring: 217 91% 60%;
-  }
+body {
+  @apply bg-gray-900 text-white font-sans;
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gray-900 text-white font-sans;
   }
+}
 
+@layer components {
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-purple to-brand-teal;
   }
   
-  .hero-button {
-    @apply rounded-lg px-6 py-3 text-white font-medium transition-all shadow-lg hover:shadow-xl;
+  .animate-gradient-flow {
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
   }
-  
-  .nav-link {
-    @apply text-gray-300 hover:text-white transition-colors;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .glass-card {
-    @apply bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-xl border border-white/10;
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html, body {
+  scroll-behavior: smooth;
 }

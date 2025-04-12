@@ -18,8 +18,8 @@ import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 
-// Get the base URL from Vite's environment variables or default to '/'
-const basename = import.meta.env.BASE_URL;
+// Get the base URL from environment - dynamically determine if we're in production or development
+const basename = import.meta.env.MODE === 'production' ? '/abhyum-ai-automation-platform' : '/';
 
 const queryClient = new QueryClient();
 

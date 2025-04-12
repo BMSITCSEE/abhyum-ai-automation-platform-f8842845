@@ -7,15 +7,22 @@ interface LogoProps {
   showText?: boolean;
 }
 
-// Get the base URL from Vite's environment variables
-const basename = import.meta.env.BASE_URL || '/';
+// Get base URL dynamically based on current environment
+const getBasePath = () => {
+  // In production use the GitHub Pages path, in development use root
+  return import.meta.env.MODE === 'production' 
+    ? '/abhyum-ai-automation-platform' 
+    : '';
+};
 
 const Logo: FC<LogoProps> = ({ className = "", showText = true }) => {
+  const basePath = getBasePath();
+  
   return (
     <Link to="/" className={`flex items-center gap-2 ${className}`}>
       <div className="w-10 h-10">
         <img 
-          src={`${basename}lovable-uploads/a1acf0e4-7de4-48f7-aaba-31fec0f2b0e5.png`}
+          src={`${basePath}/lovable-uploads/a1acf0e4-7de4-48f7-aaba-31fec0f2b0e5.png`}
           alt="Abhyum Logo" 
           className="w-full h-full object-contain" 
         />

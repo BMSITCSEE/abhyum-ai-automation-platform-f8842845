@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/abhyum-ai-automation-platform/', // Add this line for GitHub Pages
+  base: mode === 'production' ? '/abhyum-ai-automation-platform/' : '/',
   server: {
     host: "::",
     port: 8080,
