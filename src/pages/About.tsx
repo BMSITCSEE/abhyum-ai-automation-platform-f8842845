@@ -131,18 +131,18 @@ const About = () => {
             <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
               <div className="h-48 bg-gray-700"></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold">Alex Johnson</h3>
-                <p className="text-brand-blue mb-2">CEO & Co-Founder</p>
+                <h3 className="text-xl font-semibold">SHREYAS SHASHI GOWDA</h3>
+                <p className="text-brand-blue mb-2">Founder</p>
                 <p className="text-gray-400">
-                  Former AI researcher with a passion for making advanced technology accessible to businesses of all sizes.
+                   AI researcher with a passion for making advanced technology accessible to businesses of all sizes.
                 </p>
               </div>
             </div>
             <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
               <div className="h-48 bg-gray-700"></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold">Samantha Lee</h3>
-                <p className="text-brand-purple mb-2">CTO & Co-Founder</p>
+                <h3 className="text-xl font-semibold">RACHIT PARIHAR</h3>
+                <p className="text-brand-purple mb-2"> Co-Founder</p>
                 <p className="text-gray-400">
                   Machine learning expert with over 10 years of experience developing AI solutions for enterprise companies.
                 </p>
@@ -151,10 +151,10 @@ const About = () => {
             <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
               <div className="h-48 bg-gray-700"></div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold">David Chen</h3>
-                <p className="text-brand-teal mb-2">Head of Product</p>
+                <h3 className="text-xl font-semibold">ADITYA SRIVASTAVA</h3>
+                <p className="text-brand-teal mb-2">Co-Founder</p>
                 <p className="text-gray-400">
-                  Product strategist focused on creating intuitive, user-friendly AI solutions that solve real business problems.
+                Tech Head & Lead Web Developer at Abhyum, where cutting-edge design meets seamless functionality. Also steering the brand's vision as a sharp Marketing Strategist, fusing creativity with conversion.
                 </p>
               </div>
             </div>
