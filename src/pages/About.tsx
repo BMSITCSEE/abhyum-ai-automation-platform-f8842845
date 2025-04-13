@@ -6,8 +6,9 @@ import {
   Lightbulb, 
   Target, 
   Rocket, 
-  TrendingUp, 
-  MessageSquare,
+  Code,
+  Handshake as HandshakeIcon,
+  Sparkles,
   Github,
   Linkedin,
   Twitter
@@ -84,7 +85,7 @@ const About = () => {
                 <div className="md:w-3/4">
                   <h3 className="text-xl font-bold mb-4">The Beginning</h3>
                   <p className="text-gray-300">
-                    ABHYUM was born from the relentless curiosity and shared vision of two AI enthusiasts—fellow technophiles bound by a singular mission: to make intelligent systems accessible, scalable, and impactful for businesses of all sizes. What began as a passion project has evolved into a purpose-driven venture. At ABHYUM, every line of code, every algorithm, and every client interaction is infused with deep-rooted passion. We don't just build AI—we live it. Our team is powered by purpose, driven by innovation, and united by the belief that meaningful technology stems from human dedication.
+                    Abhyum started when our founders noticed that many businesses wanted to leverage AI technology but found existing solutions too complex or too expensive. We set out to create an AI platform that was powerful yet approachable, designed specifically for businesses without large IT departments or budgets.
                   </p>
                 </div>
               </div>
@@ -92,13 +93,13 @@ const About = () => {
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/4 flex justify-center">
                   <div className="bg-brand-purple/10 p-4 rounded-full h-20 w-20 flex items-center justify-center">
-                    <TrendingUp className="h-10 w-10 text-brand-purple" />
+                    <Code className="h-10 w-10 text-brand-purple" />
                   </div>
                 </div>
                 <div className="md:w-3/4">
-                  <h3 className="text-xl font-bold mb-4">Our Growth</h3>
+                  <h3 className="text-xl font-bold mb-4">Our Technology</h3>
                   <p className="text-gray-300">
-                    ABHYUM is expanding rapidly in the evolving frontier of Artificial Intelligence. We believe AI isn't just a tool—it's a transformational ally. Our mission is clear: empower startups, scale-ups, and enterprises to harness AI as a competitive advantage. As we build scalable chatbot systems, automation tools, and digital experiences, we invite you to join the revolution. Let AI become a core part of your business arsenal—shaping smarter workflows, intuitive customer journeys, and elevated productivity.
+                    Built on state-of-the-art open-source models and retrieval-augmented generation (RAG), our chatbot platform is fast, secure, and completely white-labeled. We help clients deploy intelligent assistants trained on their own content — think PDFs, websites, internal docs — all within a few hours.
                   </p>
                 </div>
               </div>
@@ -106,13 +107,27 @@ const About = () => {
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/4 flex justify-center">
                   <div className="bg-brand-teal/10 p-4 rounded-full h-20 w-20 flex items-center justify-center">
-                    <MessageSquare className="h-10 w-10 text-brand-teal" />
+                    <HandshakeIcon className="h-10 w-10 text-brand-teal" />
                   </div>
                 </div>
                 <div className="md:w-3/4">
-                  <h3 className="text-xl font-bold mb-4">Where We Are Today</h3>
+                  <h3 className="text-xl font-bold mb-4">How We Work with You</h3>
                   <p className="text-gray-300">
-                    Today, ABHYUM partners with a diverse set of forward-thinking startups—helping them navigate their digital journey with confidence and intelligence. Our tailored AI solutions are enabling these businesses to automate conversations, accelerate growth, and scale with efficiency. With every successful deployment, we reaffirm our belief: that intelligent automation isn't the future—it's the now. And we're here to lead that transformation.
+                    We make AI easy. Whether you're a tech-savvy startup or a traditional service provider, we guide you through onboarding, data prep, and deployment. Our plug-and-play platform can be adapted to match your brand and workflows — no code required.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="md:w-1/4 flex justify-center">
+                  <div className="bg-brand-blue/10 p-4 rounded-full h-20 w-20 flex items-center justify-center">
+                    <Sparkles className="h-10 w-10 text-brand-blue" />
+                  </div>
+                </div>
+                <div className="md:w-3/4">
+                  <h3 className="text-xl font-bold mb-4">Future-Ready</h3>
+                  <p className="text-gray-300">
+                    We're just getting started. As AI evolves, so does our platform. We're committed to staying on the frontier — experimenting with new models, building smarter pipelines, and empowering businesses to grow with intelligent, human-like automation.
                   </p>
                 </div>
               </div>
