@@ -89,14 +89,14 @@ const Footer: FC = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-gray-400">
                 <Mail size={16} />
-                <a href="mailto:info@abhyum.com" className="hover:text-white transition-colors">
-                  info@abhyum.com
+                <a href="mailto:abhyum.automate@gmail.com" className="hover:text-white transition-colors">
+                  abhyum.automate@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-gray-400">
                 <Phone size={16} />
-                <a href="tel:+1234567890" className="hover:text-white transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+919141175879" className="hover:text-white transition-colors">
+                  +91 9141175879
                 </a>
               </li>
             </ul>

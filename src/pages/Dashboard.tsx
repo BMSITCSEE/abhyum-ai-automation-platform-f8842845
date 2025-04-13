@@ -5,18 +5,17 @@ import {
   Bot,
   Globe,
   Smartphone,
-  Mail,
   Zap,
   MessageSquare,
   ArrowRight,
   Check,
   CheckCircle,
   Info,
-  ShoppingCart,
-  Headphones,
+  Send,
   User,
   Settings,
   LogOut,
+  Headphones,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -29,93 +28,82 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
-import { useCart } from '@/contexts/CartContext';
+import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from 'sonner';
-import { ServiceItem } from '@/contexts/CartContext';
 
-// Service Pricing Plans
-const pricingPlans = [
+// Service Options
+const serviceOptions = [
   {
     id: 'website-bot',
     name: 'Website Chatbot',
     description: 'Deploy an AI chatbot on your website',
-    price: 49,
-    type: 'subscription' as const,
-    billingCycle: 'monthly' as const,
-    features: [
-      'Custom AI Chatbot',
-      'Website Integration',
-      'Basic Training (10 PDFs/URLs)',
-      'Standard Support',
-      'Basic Analytics',
-    ],
   },
   {
-    id: 'professional',
-    name: 'Professional',
-    description: 'For businesses that need multi-channel support',
-    price: 99,
-    type: 'subscription' as const,
-    billingCycle: 'monthly' as const,
-    features: [
-      'Everything in Website Chatbot',
-      'Email Integration',
-      'Advanced Training (25 PDFs/URLs)',
-      'Priority Support',
-      'Advanced Analytics',
-    ],
-    recommended: true,
+    id: 'whatsapp-integration',
+    name: 'WhatsApp Integration',
+    description: 'Connect your AI assistant to WhatsApp for seamless communication',
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    description: 'Complete solution with all integrations',
-    price: 199,
-    type: 'subscription' as const,
-    billingCycle: 'monthly' as const,
-    features: [
-      'Everything in Professional',
-      'WhatsApp Integration',
-      'Mobile App Integration',
-      'Unlimited Training',
-      'Premium Support',
-      'Custom Branding',
-    ],
+    id: 'mobile-app-integration',
+    name: 'Mobile App Integration',
+    description: 'Integrate your chatbot with Android and iOS applications',
   },
-];
-
-// Add-on Services
-const addOns = [
   {
     id: 'training-update',
     name: 'Training Update',
     description: 'Update your chatbot with new data',
-    price: 29,
-    type: 'one-time' as const,
   },
   {
     id: 'voice-ai',
     name: 'Voice AI',
     description: 'Add voice capabilities to your chatbot',
-    price: 39,
-    type: 'one-time' as const,
   },
   {
     id: 'custom-integration',
     name: 'Custom Integration',
     description: 'Connect your chatbot to a custom system',
-    price: 149,
-    type: 'one-time' as const,
   },
 ];
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
-  const { addItem } = useCart();
-  const [activeTab, setActiveTab] = useState('pricing');
+  const [activeTab, setActiveTab] = useState('services');
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [userEmail, setUserEmail] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userMessage, setUserMessage] = useState('');
+  const [sending, setSending] = useState(false);
 
-  const handleAddToCart = (service: ServiceItem) => {
-    addItem(service);
+  const handleServiceToggle = (serviceId: string) => {
+    setSelectedServices(current => 
+      current.includes(serviceId)
+        ? current.filter(id => id !== serviceId)
+        : [...current, serviceId]
+    );
+  };
+
+  const handleSubmitRequest = () => {
+    if (selectedServices.length === 0) {
+      toast.error('Please select at least one service');
+      return;
+    }
+
+    if (!userEmail) {
+      toast.error('Please enter your email');
+      return;
+    }
+
+    // In a real app, you would send this data to an API or email service
+    // For now, we'll just show a success message
+    setSending(true);
+    
+    setTimeout(() => {
+      setSending(false);
+      toast.success('Your service request has been sent!');
+      // Reset form
+      setSelectedServices([]);
+      setUserMessage('');
+    }, 1500);
   };
 
   return (
@@ -128,13 +116,6 @@ const Dashboard = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link to="/cart">
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <ShoppingCart className="h-4 w-4" />
-                <span>Cart</span>
-              </Button>
-            </Link>
-
             <Link to="/settings">
               <Button variant="outline" size="sm" className="flex items-center gap-2">
                 <User className="h-4 w-4" />
@@ -163,93 +144,124 @@ const Dashboard = () => {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
           <TabsList className="grid grid-cols-2 w-[400px]">
-            <TabsTrigger value="pricing">Services & Pricing</TabsTrigger>
+            <TabsTrigger value="services">Our Services</TabsTrigger>
             <TabsTrigger value="features">Features</TabsTrigger>
           </TabsList>
 
-          {/* Pricing Tab Content */}
-          <TabsContent value="pricing" className="space-y-8">
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Subscription Plans</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {pricingPlans.map((plan) => (
-                  <Card 
-                    key={plan.id}
-                    className={`border ${
-                      plan.recommended 
-                        ? 'border-brand-purple shadow-lg shadow-brand-purple/20' 
-                        : 'border-gray-700'
-                    }`}
-                  >
-                    {plan.recommended && (
-                      <div className="bg-brand-purple text-white text-xs font-bold uppercase px-3 py-1 rounded-b-md absolute top-0 left-1/2 transform -translate-x-1/2">
-                        Recommended
+          {/* Services Tab Content */}
+          <TabsContent value="services" className="space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <Card className="border border-gray-700">
+                  <CardHeader>
+                    <CardTitle>Our Services</CardTitle>
+                    <CardDescription>
+                      Select the services you're interested in and we'll get back to you with a customized quote
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {serviceOptions.map(service => (
+                        <div 
+                          key={service.id}
+                          className="flex items-start space-x-3 bg-gray-800/50 p-4 rounded-lg border border-gray-700"
+                        >
+                          <Checkbox 
+                            id={service.id} 
+                            checked={selectedServices.includes(service.id)}
+                            onCheckedChange={() => handleServiceToggle(service.id)}
+                          />
+                          <div>
+                            <label 
+                              htmlFor={service.id}
+                              className="text-sm font-medium cursor-pointer block"
+                            >
+                              {service.name}
+                            </label>
+                            <p className="text-xs text-gray-400 mt-1">
+                              {service.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div>
+                <Card className="border border-gray-700 sticky top-24">
+                  <CardHeader>
+                    <CardTitle>Contact Us</CardTitle>
+                    <CardDescription>
+                      Send us your requirements
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Your Name</label>
+                      <input
+                        type="text"
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        className="w-full p-2 rounded-md border border-gray-700 bg-gray-800 text-white"
+                        placeholder="Enter your name"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Your Email</label>
+                      <input
+                        type="email"
+                        value={userEmail}
+                        onChange={(e) => setUserEmail(e.target.value)}
+                        className="w-full p-2 rounded-md border border-gray-700 bg-gray-800 text-white"
+                        placeholder="Enter your email"
+                        required
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Message (Optional)</label>
+                      <textarea
+                        value={userMessage}
+                        onChange={(e) => setUserMessage(e.target.value)}
+                        className="w-full p-2 rounded-md border border-gray-700 bg-gray-800 text-white min-h-[100px]"
+                        placeholder="Tell us more about your requirements..."
+                      />
+                    </div>
+
+                    {selectedServices.length > 0 && (
+                      <div className="bg-gray-800 p-3 rounded-lg">
+                        <p className="text-sm font-medium mb-2">Selected Services:</p>
+                        <ul className="space-y-1">
+                          {selectedServices.map(id => (
+                            <li key={id} className="text-xs text-gray-300 flex items-center">
+                              <CheckCircle className="h-3 w-3 text-brand-teal mr-2" />
+                              {serviceOptions.find(s => s.id === id)?.name}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
-                    <CardHeader>
-                      <CardTitle className="flex items-start justify-between">
-                        <div>{plan.name}</div>
-                        <div className="text-right">
-                          <span className="text-2xl font-bold">${plan.price}</span>
-                          <span className="text-gray-400 text-sm">/mo</span>
-                        </div>
-                      </CardTitle>
-                      <CardDescription>{plan.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {plan.features.map((feature, index) => (
-                          <li key={index} className="flex items-start">
-                            <CheckCircle className="h-5 w-5 text-green-500 mr-2 shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                    <CardFooter>
-                      <Button 
-                        className={`w-full ${
-                          plan.recommended 
-                            ? 'bg-brand-purple hover:bg-brand-purple/90' 
-                            : ''
-                        }`} 
-                        onClick={() => handleAddToCart(plan)}
-                      >
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        Add to Cart
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Add-on Services</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {addOns.map((addon) => (
-                  <Card key={addon.id} className="border border-gray-700">
-                    <CardHeader>
-                      <CardTitle className="flex items-start justify-between">
-                        <div>{addon.name}</div>
-                        <div className="text-right">
-                          <span className="text-2xl font-bold">${addon.price}</span>
-                        </div>
-                      </CardTitle>
-                      <CardDescription>{addon.description}</CardDescription>
-                    </CardHeader>
-                    <CardFooter>
-                      <Button 
-                        variant="outline" 
-                        className="w-full" 
-                        onClick={() => handleAddToCart(addon)}
-                      >
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        Add to Cart
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                ))}
+                  </CardContent>
+                  <CardFooter>
+                    <Button 
+                      className="w-full bg-brand-blue hover:bg-brand-blue/90"
+                      onClick={handleSubmitRequest}
+                      disabled={sending}
+                    >
+                      {sending ? (
+                        <>Processing...</>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Send Request
+                        </>
+                      )}
+                    </Button>
+                  </CardFooter>
+                </Card>
               </div>
             </div>
           </TabsContent>
@@ -295,18 +307,6 @@ const Dashboard = () => {
 
               <Card className="border border-gray-700">
                 <CardHeader>
-                  <Mail className="h-8 w-8 text-brand-blue mb-2" />
-                  <CardTitle>Email Automation</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-400">
-                    Handle customer inquiries via email with AI-powered responses and follow-ups, saving time and resources.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border border-gray-700">
-                <CardHeader>
                   <Zap className="h-8 w-8 text-brand-purple mb-2" />
                   <CardTitle>Training Pipeline</CardTitle>
                 </CardHeader>
@@ -325,6 +325,18 @@ const Dashboard = () => {
                 <CardContent>
                   <p className="text-gray-400">
                     Leverage state-of-the-art language models like GPT-4, Claude, and Mixtral for intelligent, human-like conversations.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border border-gray-700">
+                <CardHeader>
+                  <Smartphone className="h-8 w-8 text-brand-blue mb-2" />
+                  <CardTitle>Mobile Apps</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-400">
+                    Integrate with Android and iOS apps using our SDK or iframe solutions.
                   </p>
                 </CardContent>
               </Card>

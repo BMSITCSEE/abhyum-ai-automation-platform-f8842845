@@ -9,8 +9,7 @@ import {
   Zap, 
   MessageSquare, 
   Globe, 
-  Smartphone, 
-  Mail, 
+  Smartphone,
   CheckCircle2,
   Award,
   Users,
@@ -18,7 +17,9 @@ import {
   HeartHandshake,
   Store,
   HomeIcon,
-  ArrowRight
+  ArrowRight,
+  Briefcase,
+  Rocket
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -247,14 +248,6 @@ const Index = () => {
               </div>
               
               <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <Mail className="h-10 w-10 text-brand-teal mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Email Automation</h3>
-                <p className="text-gray-300">
-                  Handle customer inquiries via email with AI-powered responses and follow-ups.
-                </p>
-              </div>
-              
-              <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
                 <Smartphone className="h-10 w-10 text-brand-blue mb-4" />
                 <h3 className="text-xl font-semibold mb-2">Mobile Apps</h3>
                 <p className="text-gray-300">
@@ -264,17 +257,17 @@ const Index = () => {
               
               <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
                 <MessageSquare className="h-10 w-10 text-brand-purple mb-4" />
-                <h3 className="text-xl font-semibold mb-2">CRM Systems</h3>
+                <h3 className="text-xl font-semibold mb-2">Voice Assistant</h3>
                 <p className="text-gray-300">
-                  Connect with popular CRM systems to log conversations and manage customer data.
+                  Enable voice interaction capabilities for your AI assistant across platforms.
                 </p>
               </div>
               
               <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
                 <Zap className="h-10 w-10 text-brand-teal mb-4" />
-                <h3 className="text-xl font-semibold mb-2">API Access</h3>
+                <h3 className="text-xl font-semibold mb-2">Custom Integrations</h3>
                 <p className="text-gray-300">
-                  Custom API endpoints for seamless integration with your existing systems.
+                  Tailor-made solutions to connect with your existing business systems.
                 </p>
               </div>
             </div>
@@ -282,6 +275,22 @@ const Index = () => {
           
           {visibleSection === 'industries' && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-gray-800 rounded-lg p-6 border border-gray-700 order-first">
+                <Rocket className="h-10 w-10 text-brand-blue mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Startups & Scaleups</h3>
+                <p className="text-gray-300">
+                  Cost-effective AI solutions that grow with your business, from early stage to rapid scaling.
+                </p>
+              </div>
+              
+              <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                <Briefcase className="h-10 w-10 text-brand-purple mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Small Businesses</h3>
+                <p className="text-gray-300">
+                  Affordable automation that helps level the playing field against larger competitors.
+                </p>
+              </div>
+              
               <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
                 <Store className="h-10 w-10 text-brand-blue mb-4" />
                 <h3 className="text-xl font-semibold mb-2">E-Commerce</h3>
@@ -311,22 +320,6 @@ const Index = () => {
                 <h3 className="text-xl font-semibold mb-2">Education</h3>
                 <p className="text-gray-300">
                   Course information, enrollment assistance, and student support services.
-                </p>
-              </div>
-              
-              <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <HomeIcon className="h-10 w-10 text-brand-purple mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Local Businesses</h3>
-                <p className="text-gray-300">
-                  Hours, directions, services offered, and frequently asked questions.
-                </p>
-              </div>
-              
-              <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <Award className="h-10 w-10 text-brand-teal mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Professional Services</h3>
-                <p className="text-gray-300">
-                  Client intake, service explanations, and preliminary consultations.
                 </p>
               </div>
             </div>
