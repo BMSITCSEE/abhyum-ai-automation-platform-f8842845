@@ -126,7 +126,7 @@ const About = () => {
                 <div className="md:w-3/4">
                   <h3 className="text-xl font-bold mb-4">Future-Ready</h3>
                   <p className="text-gray-300">
-                    We're just getting started. As AI evolves, so does our platform. We're committed to staying on the frontier — experimenting with new models, building smarter pipelines, and empowering businesses to grow with intelligent, human-like automation.
+                    We're committed to staying on the frontier — experimenting with new models, building smarter pipelines, and empowering businesses to grow with intelligent, human-like automation.
                   </p>
                 </div>
               </div>
