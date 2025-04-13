@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
@@ -148,7 +147,7 @@ const About = () => {
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-1">Shreyas Shashi Kumar Gowda</h3>
-                <p className="text-sm text-gray-400 mb-4">Founder & CEO</p>
+                <p className="text-sm text-gray-400 mb-4">Founder</p>
                 <p className="text-gray-300 mb-4">
                   A visionary entrepreneur passionate about creating AI solutions for businesses of every scale.
                 </p>
@@ -172,7 +171,7 @@ const About = () => {
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-1">Rachit Parihar</h3>
-                <p className="text-sm text-gray-400 mb-4">Founder & CTO</p>
+                <p className="text-sm text-gray-400 mb-4">Founder</p>
                 <p className="text-gray-300 mb-4">
                   An AI researcher with a deep passion for making advanced technology accessible, understandable, and useful for businesses of all sizes.
                 </p>
@@ -192,13 +191,13 @@ const About = () => {
 
             <Card className="border-gray-700 overflow-hidden bg-gray-800/30">
               <div className="h-48 bg-gradient-to-r from-brand-teal/20 to-brand-blue/20 flex items-center justify-center">
-                <div className="h-28 w-28 rounded-full bg-gray-700 flex items-center justify-center text-3xl font-bold">AK</div>
+                <div className="h-28 w-28 rounded-full bg-gray-700 flex items-center justify-center text-3xl font-bold">AS</div>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-1">Ananya Kumar</h3>
-                <p className="text-sm text-gray-400 mb-4">Lead Designer</p>
+                <h3 className="text-xl font-bold mb-1">Aditya Srivastava</h3>
+                <p className="text-sm text-gray-400 mb-4">Co-Founder</p>
                 <p className="text-gray-300 mb-4">
-                  A creative designer focused on crafting intuitive and engaging user experiences for AI products.
+                  Tech Head & Lead Web Developer at Abhyum, where cutting-edge design meets seamless functionality. Also steering the brand's vision as a sharp Marketing Strategist, fusing creativity with conversion.
                 </p>
                 <div className="flex space-x-4">
                   <a href="#" className="text-gray-400 hover:text-brand-blue">
