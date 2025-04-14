@@ -11,14 +11,12 @@ const Logo: FC<LogoProps> = ({ className = "", showText = true }) => {
   // Determine if we're on GitHub Pages
   const isGitHubPages = window.location.hostname.includes('github.io');
   
-  // With HashRouter on GitHub Pages, we don't need to worry about the base path for links
-  // but we still need it for static assets like images
+  // Always use the full repository path for GitHub Pages assets
   const imageBasePath = isGitHubPages ? '/abhyum-ai-automation-platform-f8842845' : '';
   
   // Full path to the logo image
   const imagePath = `${imageBasePath}/lovable-uploads/a1acf0e4-7de4-48f7-aaba-31fec0f2b0e5.png`;
   
-  // For debugging
   console.log("Logo paths:", { isGitHubPages, imageBasePath, imagePath });
   
   return (
@@ -32,6 +30,7 @@ const Logo: FC<LogoProps> = ({ className = "", showText = true }) => {
             console.error('Logo image failed to load, falling back to placeholder', {
               attemptedPath: imagePath
             });
+            // Make sure the placeholder path is also using the correct base path
             e.currentTarget.src = `${imageBasePath}/placeholder.svg`;
           }}
         />

@@ -6,8 +6,15 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Update the base path to match your GitHub Pages repository path exactly
+  // Use the correct base path for GitHub Pages
   base: '/abhyum-ai-automation-platform-f8842845/',
+  build: {
+    // Ensure that assets are properly processed
+    assetsDir: 'assets',
+    sourcemap: true,
+    // Log build information for debugging
+    reportCompressedSize: true,
+  },
   server: {
     host: "::",
     port: 8080,
