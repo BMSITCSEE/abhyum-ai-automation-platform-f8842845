@@ -149,7 +149,7 @@ const About = () => {
                 <h3 className="text-xl font-bold mb-1">Shreyas Shashi Kumar Gowda</h3>
                 <p className="text-sm text-gray-400 mb-4">Founder</p>
                 <p className="text-gray-300 mb-4">
-                  A visionary entrepreneur passionate about creating AI solutions for businesses of every scale.
+                  A visionary entrepreneur passionate about creating AI solutions for businesses of every scale. Positioned at the intersection of AI and quantitative research, with a focus on building precision-driven alpha models. Armed with deep expertise in artificial intelligence, delivering intelligent systems that create measurable impact.
                 </p>
                 <div className="flex space-x-4">
                   <a href="#" className="text-gray-400 hover:text-brand-blue">

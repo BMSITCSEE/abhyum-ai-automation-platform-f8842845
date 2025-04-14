@@ -12,4 +12,12 @@ if (!rootElement) {
   console.warn("Root element not found, created new one");
 }
 
+// Log environment information
+console.log("Environment info:", {
+  hostname: window.location.hostname,
+  pathname: window.location.pathname,
+  href: window.location.href,
+  isGitHubPages: window.location.hostname.includes('github.io')
+});
+
 createRoot(document.getElementById("root")!).render(<App />);

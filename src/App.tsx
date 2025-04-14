@@ -18,18 +18,20 @@ import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 
-// For GitHub Pages, we need to use HashRouter instead of BrowserRouter
-// This ensures that the routing works correctly without server-side support
+// Create a new query client instance
 const queryClient = new QueryClient();
 
 const App = () => {
   // Determine if we're running on GitHub Pages
   const isGitHubPages = window.location.hostname.includes('github.io');
   
-  // Choose the appropriate router based on environment
+  // ALWAYS use HashRouter for GitHub Pages to ensure routing works properly
   const RouterComponent = isGitHubPages ? HashRouter : BrowserRouter;
-  // Only use basename for BrowserRouter, not needed for HashRouter
+  
+  // Don't need basename with HashRouter as it uses URL fragments
   const routerProps = isGitHubPages ? {} : { basename: '/abhyum-ai-automation-platform-f8842845' };
+  
+  console.log("Router info:", { isGitHubPages, RouterComponent: isGitHubPages ? 'HashRouter' : 'BrowserRouter', routerProps });
   
   return (
     <QueryClientProvider client={queryClient}>
