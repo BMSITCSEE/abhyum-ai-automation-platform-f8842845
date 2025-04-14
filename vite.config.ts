@@ -14,6 +14,14 @@ export default defineConfig(({ mode }) => ({
     sourcemap: true,
     // Log build information for debugging
     reportCompressedSize: true,
+    rollupOptions: {
+      // Ensure proper handling of assets and chunks
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
+      }
+    }
   },
   server: {
     host: "::",

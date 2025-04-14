@@ -25,17 +25,13 @@ const App = () => {
   // Determine if we're running on GitHub Pages
   const isGitHubPages = window.location.hostname.includes('github.io');
   
-  // Always use HashRouter for GitHub Pages
-  const RouterComponent = isGitHubPages ? HashRouter : BrowserRouter;
-  
-  // When using HashRouter (on GitHub Pages), we don't need a basename
-  // Only set basename for BrowserRouter (non-GitHub Pages environments)
-  const routerProps = isGitHubPages ? {} : { basename: '/abhyum-ai-automation-platform-f8842845' };
+  // ALWAYS use HashRouter for GitHub Pages - crucial for proper routing
+  const RouterComponent = HashRouter; // Force HashRouter regardless of environment
   
   console.log("App router configuration:", { 
     isGitHubPages, 
-    routerType: isGitHubPages ? 'HashRouter' : 'BrowserRouter', 
-    routerProps 
+    routerType: 'HashRouter', 
+    currentPath: window.location.pathname
   });
   
   return (
@@ -45,7 +41,7 @@ const App = () => {
         <Sonner />
         <AuthProvider>
           <CartProvider>
-            <RouterComponent {...routerProps}>
+            <RouterComponent>
               <div className="flex flex-col min-h-screen">
                 <Navbar />
                 <main className="flex-1">

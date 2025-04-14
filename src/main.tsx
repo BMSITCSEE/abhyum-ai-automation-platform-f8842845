@@ -17,13 +17,17 @@ console.log("Environment info:", {
   hostname: window.location.hostname,
   pathname: window.location.pathname,
   href: window.location.href,
-  isGitHubPages: window.location.hostname.includes('github.io')
+  isGitHubPages: window.location.hostname.includes('github.io'),
+  publicURL: import.meta.env.BASE_URL || '/',
+  mode: import.meta.env.MODE
 });
 
 // Add an event listener to log when the app is fully loaded
 window.addEventListener('load', () => {
   console.log('Application fully loaded');
   console.log('Current URL:', window.location.href);
+  console.log('Document title:', document.title);
+  console.log('Root element contents:', document.getElementById('root')?.innerHTML);
 });
 
 createRoot(document.getElementById("root")!).render(<App />);
